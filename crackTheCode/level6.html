@@ -140,7 +140,7 @@
 
 
 </div>
-      <button id="startAudio"></button>
+      <button id="startAudio">.</button>
 <audio src="bgMusic.mp3" id="audioGame" loop></audio>
 
 </body>
@@ -149,7 +149,7 @@
  
 
     document.getElementById('startAudio').onclick = function() {
-        var audio = document.getElementById('audioGame');
+        let audio = document.getElementById('audioGame');
         audio.play();
     };
 
