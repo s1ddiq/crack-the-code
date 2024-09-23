@@ -145,11 +145,12 @@
       
     // };
 
+   const audioEL = document.getElementById('audioGame')
+audioEL.play()
+
     const bodyEL = document.querySelector('body');
-    
-   bodyEL.addEventListener('onmouseover', () => {
-          let audio = document.getElementById('audioGame');
-        audio.play();
+    bodyEL.addEventListener('click', () => {
+        audioEL.play();
     })
 
 
