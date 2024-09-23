@@ -136,9 +136,13 @@
 </body>
 
 <script>
+    window.onload = function() {
+    var audio = document.getElementById('audioGame');
+    audio.play();
+};
+
     const containerOne = document.getElementById('container-1');
     const containerTwo = document.getElementById('container-2');
-    const audioG = document.getElementById('audioGame');
     const apple = document.getElementById('apple');
     const sImg = document.getElementById('secretImage');
     sImg.addEventListener('click', () => {
@@ -176,10 +180,5 @@ document.addEventListener('keydown', (event) => {
     }
 });
 
-    window.onload = function() {
-
-    audioG.play();
-
-    }
 </script>
 </html>
