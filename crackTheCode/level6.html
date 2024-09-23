@@ -114,7 +114,7 @@
 </style>
 <body>
 
-    <audio src="bgMusic.mp3" id="audioGame" loop></audio>
+    <audio src="bgMusic.mp3" id="audioGame" loop autoplay></audio>
 
 <div id="container-1">
 
@@ -176,6 +176,10 @@ document.addEventListener('keydown', (event) => {
     }
 });
 
+    window.onload = function() {
+
     audioG.play();
+
+    }
 </script>
 </html>
