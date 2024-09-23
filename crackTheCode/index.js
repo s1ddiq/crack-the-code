@@ -81,7 +81,7 @@ console.log(`
 `);
 
 // Add an event for when the user clicks in the console (to simulate the "Click Me" button)
-console.log('Click the message above to visit: http://127.0.0.1:5500/math.html');
+console.log('Click the message above to visit: https://s1ddiq.github.io/crack-the-code/crackTheCode/math.html');
 
 console.log = (function(oldLog) {
     return function(message) {
