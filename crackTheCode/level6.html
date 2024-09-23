@@ -132,14 +132,19 @@
 
 
 </div>
+      <button id="startAudio"></button>
+<audio src="bgMusic.mp3" id="audioGame" loop></audio>
 
 </body>
 
 <script>
-    window.onload = function() {
-    var audio = document.getElementById('audioGame');
-    audio.play();
-};
+ 
+
+    document.getElementById('startAudio').onclick = function() {
+        var audio = document.getElementById('audioGame');
+        audio.play();
+    };
+
 
     const containerOne = document.getElementById('container-1');
     const containerTwo = document.getElementById('container-2');
