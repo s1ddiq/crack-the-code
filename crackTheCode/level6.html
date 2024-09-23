@@ -8,15 +8,7 @@
     
     <style>
 
-        #startAudio {
-            width: 100vw;
-            height: 100vh;
-            position:absolute;
-            top:0;
-            left:0;
-            pointer-events: none;
-            opacity: 0;
-        }
+       
         body {
         font-family: "Microsoft Yahei";
         background-color: rgb(255, 255, 255);
@@ -150,9 +142,13 @@
  
 
     document.getElementById('startAudio').onclick = function() {
-        let audio = document.getElementById('audioGame');
-        audio.play();
+      
     };
+
+    const bodyEL = document.querySelector('onmouseover', () => {
+          let audio = document.getElementById('audioGame');
+        audio.play();
+    })
 
 
     const containerOne = document.getElementById('container-1');
