@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 4</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            width: 300px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .shown {
+            display: block;
+        }
+
+        .bubble {
+            position: absolute;
+            background-color: #007bff;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            max-width: 300px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            opacity: 1;
+
+            width: 250px;
+            left: 50%;
+            top: 50%;
+            transform: translateX(-50%);
+            transition: all 0.5s ease; /* Smooth fade effect */
+        }
+        .bubble.fade-out {
+            opacity: 0; /* Fade out effect */
+        }
+        .bubble::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            margin-left: -10px;
+            border-width: 10px;
+            border-style: solid;
+            border-color: #007bff transparent transparent transparent;
+        }
+
+        .secret-key {
+            font-size: 3em;
+            opacity: 0;
+            background-color: red;
+        }
+
+        .secret-key:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <p style="position: absolute; top: 40%; left: 40%;" class="secret-key">T</p>
+    <p style="position: absolute; top: 55%; left: 65%;" class="secret-key">1</p>
+    <p style="position: absolute; top: 25%; left: 45%;" class="secret-key">9</p>
+    <div class="container">
+        <h1 id="welcome">Welcome to Level 4</h1>
+        <p>To proceed, enter the code below:</p>
+        <input type="text" id="codeInput" placeholder="Enter code here">
+        <br>
+        <button onclick="checkCode()">Submit Code</button>
+        <p id="message"></p>
+    </div>
+
+    <div class="bubble hidden" id="textBubble">
+        spacebar to proceed...
+    </div>
+
+    <script>
+
+
+        let key = 'secretDiscovered?';
+        let item = localStorage.getItem(key);
+
+
+        if (item !== null) {
+            const welcome = document.getElementById('welcome');
+            welcome.textContent = `Welcome Back to Level 4 :>`
+            const textBubble = document.getElementById('textBubble');
+            textBubble.classList.add('shown');
+
+            const messages = [
+            "Welcome to the Forgotten Chamber, wanderer so bold,",
+    "Where mysteries of the past in whispers are told.",
+    "In this ancient hall, where shadows play,",
+    "Your journey’s not done; there’s more to display.",
+    "Look closely at the text that drifts with grace,",
+    "A hidden key lies where it moves in place.",
+    "The bubble’s gentle dance will guide your quest,",
+    "To find the secret that’s been long suppressed.",
+    "When the text shifts or seems to glide,",
+    "The key to the puzzle is where it hides.",
+    "Follow its path with keen and sharp eyes,",
+    "And reveal the code that beneath it lies.",
+    "Every move and change will lead the way,",
+    "To unlock the secrets of this mysterious fray.",
+    "So watch the bubble’s dance, don’t let it slip,",
+    "And uncover the key with a steady grip.",
+    "The answers are close, within your sight,",
+    "Let the bubble's movements guide you right."
+];
+
+
+        let currentIndex = 0;
+
+
+        function goToNextPosition() {
+            textBubble.style.left = '40%';
+            textBubble.style.top = '40%';
+        }
+        
+        function showNextMessage() {
+            textBubble.classList.add('fade-out'); // Start fade out
+            setTimeout(() => {
+                currentIndex = (currentIndex + 1) % messages.length;
+                textBubble.textContent = messages[currentIndex];
+                textBubble.classList.remove('fade-out'); // Fade in
+            }, 500); // Matches the CSS transition duration
+            
+            localStorage.setItem('secretDiscovered?', 'TRUE');
+        }
+        
+        document.addEventListener('keydown', function(event) {
+            if (event.code === 'Space') {
+                event.preventDefault(); // Prevent default spacebar scroll behavior
+                showNextMessage();
+            }
+            if (currentIndex === 1) {
+                goToNextPosition();
+            } else if (currentIndex===5) {
+                textBubble.style.top = '55%';
+                textBubble.style.left = '65%';
+            }
+            else if (currentIndex===8) {
+                textBubble.style.top = '25%';
+                textBubble.style.left = '45%';
+            }
+        });
+        }
+
+        function checkCode() {
+            let userInput = document.getElementById('codeInput').value;
+            let correctCode = "ECHOES123";
+            let messageElement = document.getElementById('message');
+            
+            if (userInput === correctCode) {
+                messageElement.textContent = "Code accepted! Well done.";
+                messageElement.style.color = "green";
+                // Redirect to the next level or provide further instructions
+                setTimeout(() => {
+                    window.location.href = 'level5.html'; // Change this to the actual next level
+                }, 2000);
+            } else if(userInput === 'T19') {
+                alert("You've done well, transferring you to another level");
+                window.location.href = 'level6.html';
+            } 
+            else {
+                messageElement.textContent = "Journey back to level 2, where you may find another clue";
+                messageElement.style.color = "red";
+            }
+        }
+    </script>
+</body>
+</html>

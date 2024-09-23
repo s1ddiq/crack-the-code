@@ -1,0 +1,200 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=New+Amsterdam&display=swap");
+
+:root {
+  --main-clr: #0d1b2a; /* Primary background color */
+  --text-clr: #1b263b; /* Primary text color */
+  --button-clr: #415a77; /* Button background color */
+  --button-hover-clr: #778da9; /* Button hover color */
+  --accent-clr: #e0e1dd; /* Accent color for highlights */
+  --border-clr: #a0a0a0; /* Border color */
+  --shadow-clr: rgba(0, 0, 0, 0.2); /* Shadow color */
+  --error-clr: #ff4d4d; /* Error messages or alerts */
+  --success-clr: #4caf50; /* Success messages or notifications */
+  --link-clr: #007bff; /* Links color */
+  --instruction-bg: #ffe0e0; /* Light pink background for instructions */
+  --instruction-border: #ff6f6f; /* Darker pink border for instructions */
+  --instruction-text: #333; /* Dark grey text for instructions */
+}
+
+body {
+  background-color: #0d1b2a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Microsoft YaHei", sans-serif;
+  flex-direction: column;
+  margin: 0;
+  height: 100vh;
+}
+
+#welcome-screen {
+  background-color: #007bff;
+  border: 2px solid white;
+  border-radius: 25px;
+  width: fit-content;
+  padding: 2em;
+  text-align: center;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#menu-screen {
+  color: white;
+  background-color: #007bff;
+  border-radius: 5px;
+  padding: 2em;
+}
+
+
+#audio-entry-screen {
+  background-color: #007bff;
+  padding: 1em;
+  border-radius: 5px;
+}
+
+#play-btn,
+#proceed-btn {
+  padding: 1em 2.5em;
+  border-radius: 10px;
+  border: 2px solid #0d1b2a;
+  background-color: white; /* Optional: Button background */
+  color: #0d1b2a; /* Optional: Button text color */
+  cursor: pointer; /* Add a pointer on hover */
+  transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+#play-btn:hover,
+#proceed-btn:hover {
+  background-color: #0d1b2a;
+  color: white;
+}
+
+
+
+#code-input, #code-input-2 {
+  padding: 0.5em;
+  border: 2px solid white;
+  border-radius: 10px;
+  font-size: 1em;
+  width: 80%;
+  max-width: 300px;
+  margin-bottom: 1em;
+  text-align: center;
+  outline: none;
+}
+
+#code-entry-screen, #code-entry-screen-2 {
+  background-color: #007bff;
+  padding: 1em;
+  border-radius: 5px;
+}
+
+#code-entry-screen-2 {
+  position: absolute;
+  top: 5em;
+}
+
+#code-input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+#code-input:focus, #code-input:focus {
+  border-color: white;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.hidden-number {
+  position: absolute;
+  font-size: 2em;
+  font-weight: bold;
+  padding: 0.5em 1em;
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+  background-color: red; /* Default background for better visibility */
+  display: none;
+  opacity: 0;
+}
+
+#hint, .enter-code-h2, #enter-code-h2-2 {
+  color: white;
+}
+
+.shown {
+  display: block !important;
+}
+
+.hidden-number:hover {
+  opacity: 1;
+}
+
+#locationEL {
+  background-color: green;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#morse-code-clue {
+  position: absolute;
+  top: 700px;
+  left: 700px;
+  opacity: 0;
+}
+
+#morse-code-clue:hover {
+  opacity: 1;
+}
+
+#mcc-btn {
+  background-color: transparent;
+  border: 0;
+}
+
+@keyframes slide-down {
+  to {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes slide-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.show-number {
+  display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* I see you're smarter than what I thought...it's time to up the game. go back to console and do nextPage() */

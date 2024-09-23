@@ -1,0 +1,46 @@
+body {
+    color: white;
+    font-size: 1.5em;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 4em; background-color: rgb(32, 54, 32);
+}
+
+span {
+    color:rgb(139, 141, 138); font-size: 1.3em;
+}
+
+#modalBox {
+    background-color: gray;
+    border-radius: 25px;
+    padding: 2em;
+}
+
+#clueBox {
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+.shown {
+    display: block;
+}
+
+@media (max-width: 500px) {
+    #hiddenDiv {
+        display: block;
+    }
+
+    #modalBox {
+        display: none;
+    }
+
+    #clueBox {
+        display: none;
+    }
+
+    p#advice {
+        display: none;
+    }
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Bubble</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #1c144e;
+        }
+        .bubble {
+            position: relative;
+            background-color: #007bff;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            max-width: 300px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            opacity: 1;
+            transition: opacity 0.5s ease; /* Smooth fade effect */
+        }
+        .bubble.fade-out {
+            opacity: 0; /* Fade out effect */
+        }
+        .bubble::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            margin-left: -10px;
+            border-width: 10px;
+            border-style: solid;
+            border-color: #007bff transparent transparent transparent;
+        }
+    </style>
+</head>
+<body>
+    <div class="bubble" id="textBubble">
+        spacebar to proceed...
+    </div>
+
+    <script>
+        const messages = [
+            "Welcome brave wanderer. I’ve been following your journey closely...",
+            "You’re making excellent progress, but I have a small request for you.",
+            "To continue, change your URL to `level4.html` and proceed with care.",
+            "Once there, you will uncover the next piece of the puzzle. Stay alert and trust your instincts."
+        ];
+
+        let  currentIndex = 0;
+        const textBubble = document.getElementById('textBubble');
+
+        function showNextMessage() {
+            textBubble.classList.add('fade-out'); // Start fade out
+            setTimeout(() => {
+                currentIndex = (currentIndex + 1) % messages.length;
+                textBubble.textContent = messages[currentIndex];
+                textBubble.classList.remove('fade-out'); // Fade in
+            }, 500); // Matches the CSS transition duration
+
+            localStorage.setItem('secretDiscovered?', 'TRUE');
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.code === 'Space') {
+                event.preventDefault(); // Prevent default spacebar scroll behavior
+                showNextMessage();
+            }
+        });
+    </script>
+</body>
+</html>

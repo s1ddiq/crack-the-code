@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crack the Code - Victory</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #1a1a2e;
+            color: #f5f5f5;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 3rem;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 3s ease forwards;
+        }
+
+        p {
+            text-align: center;
+            font-size: 1.5rem;
+            opacity: 0;
+            animation: fadeIn 6s ease forwards;
+        }
+
+        #reveal {
+            opacity: 0;
+            animation: fadeInP 9s ease forwards 2s;
+            font-size: 1.2rem;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        @keyframes fadeInP {
+            5% {
+                opacity: 1;
+            }
+            
+            50% {
+                transform: translateY(5em);
+            }
+
+            100% {
+                font-size: 3rem;
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+            
+        }
+    </style>
+</head>
+<body>
+
+    <audio src="bg.mp3" loop id="bg"></audio>
+    <div>
+        <h1 id="message">Congratulations, !1xC*24^/$@!</h1>
+        <p>You have cracked the code and unlocked the truth.</p>
+        <p id="reveal">But this is only the beginning... more awaits you. Until next time traveller! endLevel()</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script>
+        // Function to slowly decode "JUAU9IGHAUWHU" to "Code Breaker"
+        const decodeMessage = (original, decoded, delay) => {
+            let currentText = original.split('');
+            let step = 0;
+            const interval = setInterval(() => {
+                if (step < decoded.length) {
+                    currentText[step] = decoded[step];
+                    document.getElementById('message').textContent = `Congratulations, ${currentText.join('')}`;
+                    step++;
+                } else {
+                    clearInterval(interval);
+                }
+            }, delay);
+        };
+
+        // Start the decoding after the h1 fades in
+        setTimeout(() => {
+            decodeMessage('!1xC*24^/$@!!', 'Code Breaker', 100);
+        }, 3000);
+
+        // Play background music
+        let bg = document.getElementById('bg');
+        bg.play();
+
+        // Confetti effect after the decoding starts
+        setTimeout(() => {
+            confetti({
+                particleCount: 250,
+                spread: 70,
+                origin: { y: 0.6 },
+            });
+
+            setInterval(() => {
+                confetti({
+                    particleCount: 350,
+                    spread: Math.random() * 50 * 20,
+                    origin: { y: 0.6 }
+                });
+            }, 1000); // Confetti every second
+
+        }, 6000);
+
+        // Show the additional message after 12 seconds
+        setTimeout(() => {
+            console.log("Prepare yourself. The next challenge will come soon in Chapter 2");
+        }, 12000);
+
+        function endLevel() {
+            console.log('Your last command ;) Gday mate.')
+        }
+    </script>
+</body>
+</html>

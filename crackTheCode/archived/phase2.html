@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investigation Rooms</title>
+    <link rel="stylesheet" href="phase2.css">
+    <style>
+        /* Additional styles for the inventory and keypad */
+        #inventoryModal, #keypadModal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        #inventoryContent, #keypadContent {
+            background-color: #333;
+            margin: 10% auto;
+            padding: 20px;
+            border-radius: 10px;
+            width: 50%;
+            color: white;
+            position: relative;
+        }
+
+        #inventoryContent h2, #keypadContent h2 {
+            margin-top: 0;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #fff;
+        }
+
+        .item, .keypad-code {
+            background-color: #444;
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+        }
+
+        .keypad-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .keypad-button {
+            background-color: #555;
+            border: none;
+            color: white;
+            padding: 15px;
+            margin: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .keypad-button:hover {
+            background-color: #777;
+        }
+
+        #keypadDisplay {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #222;
+            color: white;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Investigation Rooms</h1>
+
+    <!-- Room Navigation -->
+    <div id="roomContainer">
+        <button class="room-button" onclick="enterRoom('library')">Library</button>
+        <button class="room-button" onclick="enterRoom('lab')">Laboratory</button>
+        <button class="room-button" onclick="enterRoom('serverRoom')">Server Room</button>
+        <button class="room-button" onclick="enterRoom('office')">Office</button>
+        <button id="viewInventoryButton" onclick="toggleInventory()">View Inventory</button>
+    </div>
+
+    <!-- Room Content -->
+    <div id="roomContent">
+        <h2 id="roomTitle"></h2>
+        <p id="roomDescription"></p>
+        <div id="cluesContainer"></div>
+        <button id="backButton" onclick="exitRoom()" style="display:none;">Go Back</button>
+    </div>
+
+    <!-- Inventory Modal -->
+    <div id="inventoryModal">
+        <div id="inventoryContent">
+            <span class="close" onclick="closeInventory()">&times;</span>
+            <h2>Inventory</h2>
+            <div id="inventoryItems"></div>
+        </div>
+    </div>
+
+    <!-- Keypad Modal -->
+    <div id="keypadModal">
+        <div id="keypadContent">
+            <span class="close" onclick="closeKeypad()">&times;</span>
+            <h2>Enter Code</h2>
+            <div id="keypadDisplay"></div>
+            <div class="keypad-container">
+                <button class="keypad-button" onclick="appendToKeypad('1')">1</button>
+                <button class="keypad-button" onclick="appendToKeypad('2')">2</button>
+                <button class="keypad-button" onclick="appendToKeypad('3')">3</button>
+                <button class="keypad-button" onclick="appendToKeypad('4')">4</button>
+                <button class="keypad-button" onclick="appendToKeypad('5')">5</button>
+                <button class="keypad-button" onclick="appendToKeypad('6')">6</button>
+                <button class="keypad-button" onclick="appendToKeypad('7')">7</button>
+                <button class="keypad-button" onclick="appendToKeypad('8')">8</button>
+                <button class="keypad-button" onclick="appendToKeypad('9')">9</button>
+                <button class="keypad-button" onclick="appendToKeypad('0')">0</button>
+                <button class="keypad-button" onclick="submitCode()">Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Inventory array
+        const inventory = [];
+        let currentRoom = null;
+        let keypadCode = '';
+
+        // Room data
+        const rooms = {
+            library: {
+                title: "Library",
+                description: "A dusty old library filled with ancient books and secrets.",
+                clues: [
+                    "You find a strange code hidden between the pages of a book.",
+                    "Clue found: 7A2B"
+                ],
+                items: [
+                    "Ancient Book",
+                    {name: "Code", code: "7A2B", found: false}
+                ]
+            },
+            lab: {
+                title: "Laboratory",
+                description: "A high-tech lab with numerous gadgets and experimental equipment.",
+                clues: [
+                    "A hidden compartment in the lab reveals a keycard.",
+                    "Clue found: KEY123"
+                ],
+                items: [
+                    "Keycard",
+                    {name: "Code", code: "KEY123", found: false}
+                ]
+            },
+            serverRoom: {
+                title: "Server Room",
+                description: "A room filled with rows of blinking servers and tangled cables.",
+                clues: [
+                    "You discover a security badge behind a server rack.",
+                    "Clue found: SEC456"
+                ],
+                items: [
+                    "Security Badge",
+                    {name: "Code", code: "SEC456", found: false}
+                ]
+            },
+            office: {
+                title: "Office",
+                description: "An office space with papers scattered everywhere and a computer on the desk.",
+                clues: [
+                    "A note on the desk reveals a combination code.",
+                    "Clue found: COM789"
+                ],
+                items: [
+                    "Combination Note",
+                    {name: "Code", code: "COM789", found: false}
+                ]
+            }
+        };
+
+        function enterRoom(roomName) {
+            const room = rooms[roomName];
+            if (room) {
+                currentRoom = roomName;
+                document.getElementById('roomTitle').textContent = room.title;
+                document.getElementById('roomDescription').textContent = room.description;
+                const cluesContainer = document.getElementById('cluesContainer');
+                cluesContainer.innerHTML = room.clues.map(clue => `<p>${clue}</p>`).join('');
+
+                // Show items that need to be discovered or interacted with
+                room.items.forEach(item => {
+                    if (typeof item === 'object' && item.code && !item.found) {
+                        showKeypad(item.code);
+                        item.found = true; // Mark item as found to avoid showing keypad again
+                    }
+                });
+
+                document.getElementById('backButton').style.display = 'block';
+                updateInventory(); // Update inventory UI
+            }
+        }
+
+        function exitRoom() {
+            document.getElementById('roomTitle').textContent = '';
+            document.getElementById('roomDescription').textContent = '';
+            document.getElementById('cluesContainer').innerHTML = '';
+            document.getElementById('backButton').style.display = 'none';
+        }
+
+        function showKeypad(code) {
+            keypadCode = code;
+            document.getElementById('keypadDisplay').textContent = 'Enter Code:';
+            document.getElementById('keypadModal').style.display = 'block';
+        }
+
+        function closeKeypad() {
+            document.getElementById('keypadModal').style.display = 'none';
+            keypadCode = ''; // Reset the keypad code after closing
+        }
+
+        function appendToKeypad(value) {
+            keypadCode += value;
+            document.getElementById('keypadDisplay').textContent = keypadCode;
+        }
+
+        function submitCode() {
+            // Check if the entered code matches the expected code
+            if (keypadCode === currentRoom) {
+                alert('Code accepted!');
+                // You can add additional functionality here, such as unlocking a door or revealing a clue
+            } else {
+                alert('Incorrect code, try again.');
+            }
+            closeKeypad();
+        }
+
+        function toggleInventory() {
+            const inventoryModal = document.getElementById('inventoryModal');
+            inventoryModal.style.display = inventoryModal.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function closeInventory() {
+            document.getElementById('inventoryModal').style.display = 'none';
+        }
+
+        function updateInventory() {
+            const inventoryItems = document.getElementById('inventoryItems');
+            inventoryItems.innerHTML = inventory.map(item => `<div class="item">${item}</div>`).join('');
+        }
+    </script>
+</body>
+</html>

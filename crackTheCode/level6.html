@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    
+    <style>
+        body {
+        font-family: "Microsoft Yahei";
+        background-color: rgb(255, 255, 255);
+    }
+    #secretImage {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        cursor: pointer;
+        bottom: -10px;
+    }
+
+    #apple {
+        position: absolute;
+        left: 46%;
+        bottom: 140px;
+        opacity: 0.3;
+    }
+
+    .hidden {
+        animation: disappear 2s forwards;
+        opacity: 1;
+    }
+
+    .shown {
+        animation: appear 2s forwards;
+        opacity: 0;
+    }
+
+    #container-2 {
+        width: 100vw;
+        height: 100vh;
+    }
+    #container-2 p {
+        font-size: 1.5em;
+        color: #2c3e50; /* Dark gray-blue color */
+        text-align: center;
+        font-family: 'Courier New', Courier, monospace;
+        padding: 50px;
+        background-color: rgba(255, 255, 255, 0.8); /* Transparent white background */
+        border: 2px solid #34495e; /* Darker border for emphasis */
+        border-radius: 10px; /* Rounded corners */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Slight shadow for depth */
+        margin: 20px auto;
+        max-width: 50%;
+    }
+
+    #hidden-clue {
+        font-size: 1.3em;
+        text-align: center;
+    }
+
+    #container-2 p::after {
+        content: '';
+        color: red;
+        animation: dotDot 2s infinite;
+    }
+
+    @keyframes dotDot {
+        25% {
+            content: '.';
+        }
+        50% {
+            content: '..';
+        }
+
+        65% {
+            content: '...';
+        }
+
+        75% {
+            content: '..';
+        }
+
+        100% {
+            content: '.';
+        }
+    }
+
+    @keyframes appear {
+        50% {
+            opacity: 1;
+        }
+
+        100% {
+            display: block;
+            opacity: 1;
+        }
+    }
+
+    @keyframes disappear {
+        50% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 0;
+            display: none;
+        }
+    }
+
+    .shown {
+        display: block;
+    }
+</style>
+<body>
+
+    <audio src="bgMusic.mp3" id="audioGame" loop></audio>
+
+<div id="container-1">
+
+    <div id="secretImage">
+        <img src="elm-7584638_640.png" alt="">
+    </div>
+
+    <img src="apple.png" alt="" id="apple" draggable="true">
+</div>
+
+<div id="container-2" class="hidden">
+    <p>Look closely, not all is what it seems</p>
+    <div id="hidden-clue" style="visibility: hidden;">CTRL + Shift > grabKey()</div>
+</div>
+
+
+</div>
+
+</body>
+
+<script>
+    const containerOne = document.getElementById('container-1');
+    const containerTwo = document.getElementById('container-2');
+    const audioG = document.getElementById('audioGame');
+    const apple = document.getElementById('apple');
+    const sImg = document.getElementById('secretImage');
+    sImg.addEventListener('click', () => {
+        alert('there is an apple in this tree, find it and you will be free.');
+    })
+
+    apple.addEventListener('click', () => {
+        alert("You've found an apple, but the next level will be a hassle.");
+        containerOne.classList.add('hidden');
+        containerTwo.classList.add('shown');
+    })
+
+    const hiddenClue = document.getElementById('hidden-clue');
+
+// Add an event listener to container-2
+containerTwo.addEventListener('click', () => {
+    // Reveal the hidden clue
+    hiddenClue.style.visibility = 'visible';
+});
+
+
+document.addEventListener('keydown', (event) => {
+    // Check if the Control key is pressed
+    if (event.ctrlKey && event.shiftKey) {
+        hiddenClue.style.visibility = 'hidden';
+        let command = prompt('command?');
+        function grabKey() {
+            alert(`${command}... success! transferring you to door 3.`);
+            window.location.href = 'doorthree.html'
+        }
+
+        if (command === 'grabKey()') {
+            grabKey();
+        }
+    }
+});
+
+    audioG.play();
+</script>
+</html>

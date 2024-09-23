@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crack the Code</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Welcome Screen -->
+    <div id="welcome-screen">
+        <h2 style="letter-spacing: 2px;">Crack the Code</h2>
+        <button id="play-btn">Play</button>
+        <p>LINKS: </p>
+
+        <a href="https://www.rapidtables.com/convert/number/binary-to-ascii.html">Binary to Text</a> <br>
+        <a href="https://www.textreverse.com/">Text Reverse</a> <br>
+        <a href="https://morsecode.world/international/translator.html">Morse Code to Text</a> <br>
+        <a href="https://www.pelock.com/products/steganography-online-codec">Online Image Decoder</a> <br> 
+        <a href="https://codebeautify.org/ascii-to-text">ASCII To Text</a>
+        <a href="https://www.base64decode.org/">Base64 Decoder</a>
+    </div>
+
+    <!-- Menu Screen -->
+    <div id="menu-screen" class="hidden">
+        <h2>Menu</h2>
+        <p>Navigate the page to find clues!</p>
+        <p>(click btw) Your mission is to explore each level, gather all the clues, and use them to decipher the final keycode. Taking notes is advised!</p>
+        <button id="proceed-btn">Proceed</button>
+    </div>
+
+    <!-- Code Entry Screen -->
+    <div id="code-entry-screen" class="hidden">
+        <h2 class="enter-code-h2">Enter the Code</h2>
+        <input type="text" id="code-input" placeholder="Enter code here">
+        <button id="code-submitBtn">enter</button>
+        <p id="hint">Hint: you lived there...</p>
+        <p id="number-list">.</p>
+    </div>
+
+    <div class="hidden-number" style="top: 150px; left: 100px;">1</div>
+    <div class="hidden-number" style="top: 200px; left: 300px;">8</div>
+    <div class="hidden-number" style="top: 400px; left: 500px;">1</div>
+    <div class="hidden-number" style="top: 150px; left: 700px;">8</div>
+    <div class="hidden-number" style="top: 350px; left: 900px;">6</div>
+
+    <!-- Mouse Position Tracker -->
+    <p id="locationEL">Move your mouse</p>
+
+    <div id="audio-entry-screen" class="hidden">
+        <h2 class="audio-code-h2">... . . -.- / .- -. -.. / -.-- --- ..- / ... .... .- .-.. .-.. / ..-. .. -. -.. / -.--. --... .---- ----- --..-- / --... .---- ----- -.--.-</h2>
+    
+        <!-- Audio Element -->
+        <!-- Replay Button -->
+        <p id="hint">Hint: Morse Code to Text? </p>
+    </div>
+    
+
+    <div id="morse-code-clue" class="hidden">
+        <button id="mcc-btn"><span style="font-size: 2.5em;">🔑</span></button>
+    </div>
+
+    <div id="console-screen" class="hidden">
+
+    </div>
+
+    <script src="index.js"></script>
+    <script src="events.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

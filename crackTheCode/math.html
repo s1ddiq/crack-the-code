@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Puzzle</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: white;
+        }
+        .puzzle-container {
+            text-align: center;
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .shown {
+            display: block;
+        }
+
+        #binaryCode {
+            word-break:break-all;
+            font-weight: 700;
+            letter-spacing: 5px;
+            text-align: center;
+            font-size: 3em;
+            opacity: 0.2;
+            position: absolute;
+        }
+
+        #encoded_image {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            bottom: 0;
+        }
+
+        #code-submitBtn-2 {
+            background-color: #0d1b2a;
+            height: 40px;
+            border: 5px;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="code-entry-screen-2" class="hidden">
+        <label class="enter-code-h2-2" for="enterBtn">binary code?</label>
+        <input name="enterBtn" type="text" id="code-input-2" placeholder="Enter code here">
+        <button id="code-submitBtn-2">enter</button>
+    </div>
+
+    <div class="puzzle-container">
+        <h2>Solve the math puzzle:</h2>
+        <p id="question"></p>
+        <input type="number" id="answer" placeholder="Enter your answer here">
+        <button id="submitBtn">Submit</button>
+    </div>
+
+    <div id="encoded_image" class="hidden">
+        <!-- <img src="daffy_encoded.png" alt="daffy"> -->
+    </div>
+
+    <p id="binaryCode" class="hidden">00100010 01100100 01100001 01100110 01100110 01111001 00100000 01101001 01110011 00100000 01100001 00100000 01110011 01100101 01100011 01110010 01100101 01110100 00100010</p>
+    
+    <p id="result"></p>
+    <script>
+
+        const brightL = 'Yesterday was today, Today was yesterday, Tomorrow is...the future or the past? alert(nBrightL)';
+            const nBrightL = 'ctrl + shift + i then go to "Sources > style.css > scroll all the way down to line 200';
+        // Math Puzzle Logic
+        const nextPage = () => {
+            const nextPageEL = 'insane.html';
+            window.location.href = 'http://127.0.0.1:5500/insane.html';
+        console.log('%cYour journey... has just begun: %c' + 'http://127.0.0.1:5500/insane.html', 'color: blue; text-decoration: underline;', 'color: blue;');
+        };
+
+
+
+        const questionElement = document.getElementById('question');
+        const answerInput = document.getElementById('answer');
+        const submitBtn2 = document.getElementById('code-submitBtn-2');
+        const submitBtn = document.getElementById('submitBtn');
+        const resultElement = document.getElementById('result');
+        const puzzleContainer = document.querySelector('.puzzle-container')
+        const bodyEL = document.querySelector('body');
+        const binaryCode = document.getElementById('binaryCode');
+        const daffyEncoded = document.getElementById('encoded_image');
+        const codeEntry = document.getElementById('code-entry-screen-2');
+        const codeInput2 = document.getElementById('code-input-2');
+        const secretMessage = 'now do --> console.log(secretMessage2)';
+        const secretMessage2 = ['Yard', 'Ouar', 'Ugh', 'are closer...', 'secretMessage3 ?'];
+        const secretMessage3 = ["The", "journey", "has", "begun,", "and", "your", "path", "is", "set,",
+            "In", "puzzles", "and", "riddles,", "your", "skills", "will", "be", "met.",
+            "With", "each", "clue", "you", "uncover", "and", "each", "mystery", "you", "solve,",
+            "A", "deeper", "adventure", "in", "this", "realm", "will", "evolve.",
+            "",
+            "Keep", "your", "mind", "sharp", "and", "your", 'do --> alert(brightL)', "face", "bright,",
+            "For", "hidden", "secrets", "await", "in", "the", "depths", "of", "the", "night.",
+            "Continue", "your", "quest,", "let", "curiosity", "be", "your", "guide,",
+            "And", "unlock", "the", "wonders", "that", "in", "shadows", "hide."]
+        // Generate a random math question
+        function generateQuestion() {
+            const num1 = Math.floor(Math.random() * 10) + 1;
+            const num2 = Math.floor(Math.random() * 10) + 1;
+            const correctAnswer = num1 + num2;
+            questionElement.textContent = `What is ${num1} + ${num2}?`;
+
+            return correctAnswer;
+        }
+
+        // Store the correct answer
+        let correctAnswer = generateQuestion();
+
+        // Handle the submit button click
+        submitBtn.addEventListener('click', () => {
+            const userAnswer = parseInt(answerInput.value, 10);
+            if (userAnswer === correctAnswer) {
+                resultElement.textContent = 'Correct! Well done...';
+                resultElement.style.color = 'green';
+                puzzleContainer.style.display = 'none';
+                setTimeout(() => {
+                    resultElement.style.display = 'none';
+                    bodyEL.style.backgroundColor = '#0d1b2a';
+                    daffyEncoded.classList.add('shown');
+                    binaryCode.classList.add('shown');
+                    codeEntry.classList.add('shown');
+                    
+                }, 1000);
+            } else {
+                resultElement.textContent = 'Incorrect. Try again!';
+                resultElement.style.color = 'red';
+            }
+        });
+
+        submitBtn2.addEventListener('click', () => {
+            const entValue = codeInput2.value;
+            if (entValue === 'daffy is a secret') {
+                alert('--> THGINDIM TA SEILF LWO EHT <-- (DELOOF NEEB EVAH UOY)')
+            } else {
+                alert(')egasseMterces(gol.elosnoc :epyt elosnoc eht ni dna i + tfihs + lrtc')
+            }
+        })
+    </script>
+</body>
+</html>
+

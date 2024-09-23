@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T1RzQ3J5cHRpYw==</title>
+        <style>
+            body {
+    background-color: #001f3f; /* Dark blue background */
+    color: #ffffff; /* White text for contrast */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+button {
+    background-color: #007bff; /* Blue button */
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 20px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.modal h1 {
+    font-size: .6em;
+    text-align: center;
+    /* color: #001f3f; */
+}
+
+.modal-content {
+    background-color: #ffffff; /* White background for modal */
+    border-radius: 10px;
+    padding: 20px;
+    width: 650px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    height: 170px;
+    
+}
+
+.modal h2 {
+    margin-top: 0;
+}
+
+input[type="text"] {
+    width: calc(100% - 20px); /* Full width minus padding */
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button#submitCode {
+    background-color: #142549; /* Green button for submission */
+    text-align: center;
+    position: absolute;
+    left: 0;
+
+}
+
+button#submitCode:hover {
+    background-color: #1d2a46;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+#feedback {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #dc3545; /* Red for error messages */
+}
+
+        </style>
+</head>
+<body>
+   
+   
+    <button id="openModal">Open Code Input</button>
+
+    <div id="codeModal" class="modal hidden">
+        <h1>I’m hidden where titles often lie,
+            Look to the top, lift your eye.
+            <a href="https://www.base64decode.org/" style="color: blue; text-decoration: none; font-size: 1em;">Decode my message,</a> simple yet true,
+            And the next step will come to you.</h1>
+        <div class="modal-content">
+            
+            <span class="close">&times;</span>
+            <h2>Enter the Secret Code</h2>
+            <input type="text" id="codeInput" placeholder="Enter code here...">
+            <button id="submitCode">Submit</button>
+            <p id="feedback"></p>
+        </div>
+    </div>
+
+</body>
+
+<script>
+
+const openModalButton = document.getElementById('openModal');
+const modal = document.getElementById('codeModal');
+const closeModalButton = document.querySelector('.close');
+const submitCodeButton = document.getElementById('submitCode');
+const codeInput = document.getElementById('codeInput');
+const feedback = document.getElementById('feedback');
+
+// Open the modal
+openModalButton.addEventListener('click', () => {
+    modal.classList.remove('hidden');
+});
+
+// Close the modal
+closeModalButton.addEventListener('click', () => {
+    modal.classList.add('hidden');
+});
+
+// Handle code submission
+submitCodeButton.addEventListener('click', () => {
+    const code = codeInput.value.trim();
+    if (code === 'OTsCryptic') { // Replace with your actual code
+        feedback.textContent = 'Code accepted!';
+        feedback.style.color = '#28a745'; // Green for success
+        alert('tranferring you...');
+        window.location.href = 'secret\key\revealNextLevel()\level7.html';
+    } else {
+        feedback.textContent = 'Incorrect code. Try again.';
+        feedback.style.color = '#dc3545'; // Red for error
+    }
+});
+
+    function generateSequence() {
+        const pageTitle = document.title;
+        const decodedTitle = atob(pageTitle);
+        const sequence = 'OTPCrypted'
+
+        const title = atob(sequence);
+        // window.btoa(sequence);
+        console.log(decodedTitle)
+        console.log(title);
+    }
+
+
+    generateSequence()
+</script>
+</html>

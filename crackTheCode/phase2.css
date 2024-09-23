@@ -1,0 +1,63 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1a1a1a;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    color: #ffb300;
+    margin-bottom: 20px;
+}
+
+#roomContainer {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.room-button {
+    background-color: #333;
+    border: none;
+    padding: 15px 30px;
+    color: #fff;
+    font-size: 1.2em;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+.room-button:hover {
+    background-color: #555;
+}
+
+#roomContent {
+    margin-top: 30px;
+    display: none;
+}
+
+#roomTitle {
+    color: #ff4d4d;
+    font-size: 2em;
+}
+
+#cluesContainer {
+    margin-top: 20px;
+}
+
+#backButton {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #45a049;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+}
+
+#backButton:hover {
+    background-color: #5ec25e;
+}

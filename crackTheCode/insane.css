@@ -1,0 +1,93 @@
+.hidden {
+    display: none !important;
+  }
+
+  .shown {
+    display: block !important;
+  }
+
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column-reverse;
+    background-color: #f7edd2ff;
+}
+
+#insaneContainer {
+    display: flex;
+    flex-direction: column;
+    /* background: url(scroll_middle.png); */
+}
+
+#poem {
+    color: rgb(7, 27, 80);
+    font-size: 1.5em;
+    font-family: "Microsoft Yahei";
+    text-align: left;
+    font-style: italic;
+}
+
+#insaneContainer > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url(scroll_middle.png);
+}
+
+h1#detectMessage {
+    font-family: Arial, sans-serif;
+    font-size: 32px;
+    color: #333; /* Dark gray color */
+    text-align: center;
+    margin-top: 50px;
+  }
+
+  h1#detectMessage sm {
+    font-size: 16px; /* Smaller size for <sm> tag */
+    color: #888; /* Light gray color for the <sm> text */
+  }
+
+
+  /* modal */
+
+
+  #inputScreen {
+    display: flex;
+    flex-direction: column;
+    padding: 25em;
+  }
+
+  #inputCode {
+    width: 280px;
+    height: 50px;
+    border-radius: 25px;
+  }
+
+  #inputCodeLabel {
+    color: #333;
+    font-size: 1.5em;
+    word-break: break-all;
+    letter-spacing: 7.5px;
+    text-align: justify;
+    color: red;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.5em;
+  }
+
+  img[src="vector.png"] {
+    position: absolute;
+    top: 0;
+    opacity: 0.3;
+    pointer-events: none;
+  }
+
+  #duck {
+    height: 700px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+ 

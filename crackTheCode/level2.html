@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    @import url(https://fonts.googleapis.com/css?family=Share+Tech+Mono);
+.decode-text {
+  width: 100%;
+  text-align: center;
+  font-size: 4em;
+  font-weight: bold;
+
+  font-family: "Microsoft Yahei";
+}
+
+.space {
+  display: inline-block;
+  width: 10px;
+}
+
+.text-animation {
+  display: inline-block;
+  color: transparent;
+  text-transform: uppercase;
+}
+.text-animation:before {
+  content: '';
+  color: black;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: #0e182d;
+  width: 0;
+  height: 1.2em;
+  -webkit-transform: translate(-50%, -55%);
+  -ms-transform: translate(-50%, -55%);
+  transform: translate(-50%, -55%);
+}
+.text-animation.state-1:before {
+  width: 1px;
+}
+.text-animation.state-2:before {
+  width: .9em;
+}
+.text-animation.state-3 {
+  color: black;
+}
+.text-animation.state-3:before {
+  width: 0;
+}
+
+#refresh {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  cursor: pointer;
+}
+
+div {
+    transition: 0.5s ease;
+  font-family: 'Share Tech Mono', monospace;
+}
+
+body {
+  background: #415a77;
+  height: 100vh;
+  align-items: center;
+  display: flex;
+}
+
+#spanHoover {
+    transition:0.5s ease;
+}
+
+
+#spanHoover:hover div {
+    color:#0e182d;
+    transition: 0.5s ease;
+    transform: translateY(-15%);
+}
+
+</style>
+<body>
+    <div class="decode-text">
+        <div class="text-animation" style="display:inline-block;position:relative;">F</div>
+        <div class="text-animation" style="display:inline-block;position:relative;">I</div>
+        <div class="text-animation" style="display:inline-block;position:relative;">N</div>
+        <div class="text-animation" style="display:inline-block;position:relative;">D</div>
+        <div class="space"></div>
+        <div class="text-animation" style="display:inline-block;position:relative;">T</div>
+        <div class="text-animation" style="display:inline-block;position:relative;">H</div>
+        <div class="text-animation" style="display:inline-block;position:relative;">E</div>
+        
+        
+        <div class="space"></div>
+        
+        <span id="spanHoover">
+            <div class="text-animation" style="display:inline-block;position:relative;">V</div>
+            <div class="text-animation" style="display:inline-block;position:relative;">e</div>
+            <div class="text-animation" style="display:inline-block;position:relative;">i</div>
+            <div class="text-animation" style="display:inline-block;position:relative;">l</div>
+            <div class="text-animation" style="display:inline-block;position:relative;">e</div>
+            <div class="text-animation" style="display:inline-block;position:relative;">d</div>
+        </span>
+       
+        
+        <div class="space"></div>
+        
+        <div class="text-animation" style="display:inline-block;position:relative;"><a href="level3.html" style="color: black; text-decoration: none;">C</a></div>
+        <div class="text-animation" style="display:inline-block;position:relative;">o</div>
+        <div class="text-animation" style="display:inline-block;position:relative;">d</div>
+        <div class="text-animation" style="display:inline-block;position:relative;">e</div>
+        
+  
+  </div>
+  
+  <!-- <a id="refresh" onclick="decodeText();">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+  </a> -->
+
+
+  <script>
+    
+function decodeText(){
+    let text = document.getElementsByClassName('decode-text')[0];
+    let state = [];
+    for(let i = 0, j = text.children.length; i < j; i++ ){
+        text.children[i].classList.remove('state-1','state-2','state-3');
+        state[i] = i;
+    }
+    let shuffled = shuffle(state);
+ 
+    for(let i = 0, j = shuffled.length; i < j; i++ ){
+        let child = text.children[shuffled[i]];
+        classes = child.classList;
+
+        // fire the first one at random times
+        let state1Time = Math.round( Math.random() * (2000 - 300) ) + 50;
+        if(classes.contains('text-animation')){ 
+            setTimeout(firstStages.bind(null, child), state1Time);
+        }
+    }
+}
+    function firstStages(child){
+    if( child.classList.contains('state-2') ){   
+        child.classList.add('state-3');
+    } else if( child.classList.contains('state-1') ){
+        child.classList.add('state-2')
+    } else if( !child.classList.contains('state-1') ){
+        child.classList.add('state-1');
+        setTimeout(secondStages.bind(null, child), 100);
+    }    
+}
+function secondStages(child){
+    if( child.classList.contains('state-1') ){
+        child.classList.add('state-2')
+        setTimeout(thirdStages.bind(null, child), 100);
+    } 
+    else if( !child.classList.contains('state-1') )
+    {
+        child.classList.add('state-1')
+    }
+}
+    function thirdStages(child){
+    if( child.classList.contains('state-2') ){
+        child.classList.add('state-3')
+    }
+
+}
+
+    function shuffle(array) {
+    let currentIndex = array.length, temporaryValue, randomIndex;
+
+    while (0 !== currentIndex) {
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+
+        // And swap it with the current element.
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
+    return array;
+}
+
+
+decodeText();
+
+console.log(`
+  You've come so far, but there's more to know,
+  A path untrodden still left to show.
+
+  To unlock the next hidden door,
+  Type the code: \`revealNext()\` once more.
+
+  And with that, the fog will lift,
+  Another clue—your next gift.
+`);
+
+
+function revealNext() {
+  console.log(`
+    The path has twisted, but hope remains,
+    A new destination calls your name.
+
+    Journey now to level 4,  
+    Where secrets lie behind the door.
+
+    Open level4.html with care,  
+    There, an input box will be laid bare.
+
+    Enter the code to move ahead,  
+    The answer sought is where you’re led.
+    http://127.0.0.1:5500/level4.html
+  `);
+
+  // Provide a specific code for the user to use
+  setTimeout(() => {
+    console.log('%cHint: The code you need to enter is "ECHOES123".', 'color: #ff9900; font-weight: bold;');
+  }, 17000);
+}
+
+  </script>
+</body>
+</html>

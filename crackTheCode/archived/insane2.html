@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 499 Investigation</title>
+    <link rel="stylesheet" href="insane2.css">
+</head>
+<body>
+
+    <!-- Screen 1: Storyline -->
+    <div id="screenOne" class="hidden">
+        <h1>Project 499</h1>
+        <p id="dialog"></p>
+        <div id="info-container"></div>
+    </div>
+
+    <!-- Screen 2: Persons of Interest -->
+    <div id="screenTwo" class="shown screenTwo">
+        <h1>Persons of Interest</h1>
+        <div id="personsContainer"></div>
+        <p id="poi-count">PEOPLE OF INTEREST: </p>
+        <button id="proceedButton" style="display: none;" onclick="proceedToNextLevel()">Proceed to Next Level</button>
+    </div>
+
+    <!-- Clue Sections (Hidden until revealed) -->
+    <div id="clueEvelyn" style="display: none;">
+        <p><strong>Clue for Dr. Evelyn Wright:</strong> A hidden file was found on her computer, hinting at secret research unrelated to Project 499.</p>
+    </div>
+    <div id="clueVictor" style="display: none;">
+        <p><strong>Clue for Victor Kane:</strong> His security protocols were altered without his knowledge, leading to a major breach.</p>
+    </div>
+    <div id="clueIsaac" style="display: none;">
+        <p><strong>Clue for Isaac Mercer:</strong> Financial records show large sums transferred to a foreign bank just days before the project collapsed.</p>
+    </div>
+    <div id="clueSophia" style="display: none;">
+        <p><strong>Clue for Sophia Crane:</strong> Encrypted AI logs suggest she was attempting to build a failsafe within the AI system.</p>
+    </div>
+    <div id="clueAlex" style="display: none;">
+        <p><strong>Clue for Alex Turner:</strong> Logs show multiple attempts to patch a critical backdoor in the system that was never reported.</p>
+    </div>
+
+    <script src="insane2.js"></script>
+</body>
+</html>

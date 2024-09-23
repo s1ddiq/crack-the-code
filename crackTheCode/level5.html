@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanderer’s Help</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #0f0e1a;
+            margin: 0;
+            padding: 0;
+            color: white;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        h1 {
+            color: white;
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #response {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #555;
+        }
+
+        #food {
+            opacity: 0;
+            font-size: 5em;
+        }
+        #food:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hello there, wanderer!</h1>
+    <p>How can I assist you today? :></p>
+
+    <div>
+        <button onclick="provideHelp('food')">Need Food</button>
+        <button onclick="provideHelp('advice')">Need Advice</button>
+    </div>
+   
+    <p style="position: absolute; left: 0; top: 0;" id="food" onclick="travelToFood()">🥕</p>
+
+    <div id="response"></div>
+
+
+
+    <script>
+
+        function travelToFood() {
+            let order = prompt('Will you eat this?');
+            if (order === 'yes') {
+                alert('Go to tree/tree.html ');
+            } else if (order === 'no') {
+                alert("Why? aren't you hungry :>... just take my advice ;)");
+            }
+        }
+        function provideHelp(type) {
+            let responseElement = document.getElementById('response');
+            if (type === 'food') {
+                responseElement.textContent = "A wise wanderer knows that sustenance is key. Explore the left side of the **page** to find what you seek.";
+                responseElement.style.color = "green";
+            } else if (type === 'advice') {
+                responseElement.textContent = "Guidance awaits those who ask. Seek within the code of **advice.html**  and you may find your path illuminated.";
+                responseElement.style.color = "blue";
+            }
+        }
+    </script>
+</body>
+</html>

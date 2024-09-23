@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="advice.css">
+
+</head>
+<body>
+    <div>
+        <p id="advice"> "My advice is short, but very <span>wise,</span> find where another one of my clues <span>lies.</span>"</p>
+        
+       </div>
+
+       <div id="clueBox">
+        <p>🔐</p>
+       </div>
+
+
+
+       <div id="modalBox" class="hidden">
+        <div>
+            <h2>Whispers of the Wind</h2>
+            <p>
+                Through the veil, a whisper calls,  
+                A secret etched within these walls.  
+                The code you seek lies close at hand,  
+                Beneath the surface, it will stand.
+            </p>
+            <p>Go now, inspect the hidden land...</p>
+        </div>
+       </div>
+
+       <div id="hiddenDiv" class="hidden">
+        <p>SECRET-4729 IS THE PASSWORD TO:
+            <a href="https://www.temporary-url.com/14D5A" style="color: dodgerblue; text-decoration: none;">14D5A</a>
+        </p>
+       </div>
+
+    <!-- GO TO CONSOLE -->
+
+    <script>
+
+        const clueBox = document.getElementById('clueBox');
+        const modalBox = document.getElementById('modalBox');
+
+        function openModal() {
+            modalBox.classList.add('shown');
+            console.log(`
+
+            Run the storeKey() command.
+             
+        
+            `);
+
+        }
+        clueBox.addEventListener('click', openModal);
+
+        function storeKey() {
+            localStorage.setItem('hiddenKey', 'KEY: SECRET-4729');
+            localStorage.setItem('doorTwo', 'HINT: change *advice.html* to *doortwo.html*');
+            console.log(`
+            To the **Application** tab you must now go,  
+        For in the storage lies what you seek to know.  
+        A chest called **localStorage** holds your key,  
+        There, the secret waits patiently.
+            `)
+            alert("The key has been stored in the chest. Seek it when you’re ready.");
+        }
+
+        function reveal() {
+            console.log(`
+        %cThe winds of change now call your hand,  
+        To shape the world as it will stand.  
+        But heed this clue, for size is key,  
+        A window's width of five hundred be.
+        Stretch or shrink, as you desire,  
+        Until this form you do acquire.  
+        Only then, the path will show,  
+        What lies ahead, for you to know.`, `color: green; font-weight: bold; font-family: "Microsoft Yahei", `)
+        }
+
+        function revealNF() {
+            console.log('%cChange your URL to secret.html', 'color: dodgerblue; font-weight: bolder;');
+
+        }
+    </script>
+</body>
+</html>
