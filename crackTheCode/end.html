@@ -81,7 +81,7 @@
 
     <div id="playButton" style="width: 100vw; height: 100vh; position: absolute; top: 0;
     left: 0;">.</div>
-    <audio src="bg.mp3" loop class="audioG" autoplay="true"></audio>
+    <audio src="bg.mp3" loop id="audioG" autoplay="true"></audio>
     <div>
         <h1 id="message">Congratulations, !1xC*24^/$@!</h1>
         <p>You have cracked the code and unlocked the truth.</p>
@@ -148,14 +148,15 @@
 
 
 
+        alert('PLEASE CLICK THE PAGE AFTER YOU PRESS OK ON THIS.')
     const playButton = document.getElementById('playButton');
-    const audio = document.querySelector('.audioG');
     // Add a click event listener to the button
-        audio.play().catch(err => {
-            console.log('Error playing audio:', err);
-        });
+    window.addEventListener('click', () => {
+        const audio = document.getElementById('audioG');
+        audio.play();
+    })
         
-        
+         
     </script>
 </body>
 </html>
