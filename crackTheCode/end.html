@@ -38,6 +38,8 @@
             font-size: 1.2rem;
             text-align: center;
             margin-top: 20px;
+            padding: 2px;
+            border-radius: 20px;
         }
 
         @keyframes fadeInP {
@@ -46,11 +48,23 @@
             }
             
             50% {
-                transform: translateY(5em);
+                transform: translateY(-5em);
+            }
+
+            60% {
+                font-size: 3rem;
+                opacity: 1;
+            }
+
+            80% {
+                transform: translateX(-20%);
+                transform: translateY(-50%);
             }
 
             100% {
-                font-size: 3rem;
+                transform: translateX(0);
+                rotate: 0deg;
+                transform: translateY(-10em);
                 opacity: 1;
             }
         }
@@ -69,12 +83,12 @@
     <div>
         <h1 id="message">Congratulations, !1xC*24^/$@!</h1>
         <p>You have cracked the code and unlocked the truth.</p>
-        <p id="reveal">But this is only the beginning... more awaits you. Until next time traveller! endLevel()</p>
+        <p id="reveal">But this is only the beginning... more awaits you. Until next time traveller! endChapterOne()</p>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <script>
-        // Function to slowly decode "JUAU9IGHAUWHU" to "Code Breaker"
+        // Function to slowly decode "!1xC*24^/$@" to "Code Breaker"
         const decodeMessage = (original, decoded, delay) => {
             let currentText = original.split('');
             let step = 0;
@@ -121,8 +135,11 @@
             console.log("Prepare yourself. The next challenge will come soon in Chapter 2");
         }, 12000);
 
-        function endLevel() {
-            console.log('Your last command ;) Gday mate.')
+        function endChapterOne() {
+            alert('Your last command ;) Gday mate.');
+            window.location.href = 'bye.html';
+            localStorage.setItem('C1 Completed ?', true);
+            localStorage.setItem("BADGE OF HONOR", true)
         }
     </script>
 </body>
