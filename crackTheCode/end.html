@@ -79,7 +79,9 @@
 </head>
 <body>
 
-    <audio src="bg.mp3" loop id="bg" autoplay></audio>
+    <div id="playButton" style="width: 100vw; height: 100vh; position: absolute; top: 0;
+    left: 0;">.</div>
+    <audio src="bg.mp3" loop class="audioG" autoplay="true"></audio>
     <div>
         <h1 id="message">Congratulations, !1xC*24^/$@!</h1>
         <p>You have cracked the code and unlocked the truth.</p>
@@ -109,13 +111,10 @@
         }, 3000);
 
         // Play background music
-        let bg = document.getElementById('bg');
-        bg.play();
-
         
-
         
-
+        
+        
         // Confetti effect after the decoding starts
         setTimeout(() => {
             confetti({
@@ -123,7 +122,8 @@
                 spread: 70,
                 origin: { y: 0.6 },
             });
-
+            
+            
             setInterval(() => {
                 confetti({
                     particleCount: 350,
@@ -146,6 +146,15 @@
             localStorage.setItem("BADGE OF HONOR", true)
         }
 
+
+
+    const playButton = document.getElementById('playButton');
+    const audio = document.querySelector('.audioG');
+    // Add a click event listener to the button
+        audio.play().catch(err => {
+            console.log('Error playing audio:', err);
+        });
+        
         
     </script>
 </body>
