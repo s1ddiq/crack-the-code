@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>RODE</title>
 </head>
 
 <link rel="stylesheet" href="insane.css">
@@ -91,9 +91,19 @@ function handleKeydown(e) {
                 showInputScreen();
                 inputScreenHolder.focus();
             }, 2000);
-        } else {
-            messageEL.style.color = 'red';
+
+            console.clear();
+            console.log('100 111 32 45 45 62 32 98 101 103 105 110 73 109 97 103 101 40 41 ');
+        
+            console.log(`
+
+https://codebeautify.org/ascii-to-text
+___________________________________`);
+        }
+
+        if (keyPressed.length === secretPhrase.length && keyPressed !== secretPhrase) {
             wrongEL.play();
+            messageEL.style.color = 'red';
         }
     }
 }
@@ -113,15 +123,8 @@ function showInputScreen() {
 bodyEL.addEventListener('keydown', handleKeydown);
 
 
-console.clear();
-console.log('100 111 32 45 45 62 32 98 101 103 105 110 73 109 97 103 101 40 41 ');
-// console.log(`It has reached a true potential, a zenith of capabilities and promise, where the horizon seems to expand infinitely. Yet, as it stands poised at the edge of greatness, what unseen force might pull it back from its boundless ascent? The challenge is not merely in the ascent itself, but in the hidden barriers and enigmatic forces that dwell in the periphery. These forces are like whispers in the dark, subtle yet profound, holding secrets that could either propel it forward or constrain its journey. To understand what holds it back, one must delve into the depths of uncertainty and confront the mysteries that lie in wait, obscured by the very brilliance it seeks to uncover.`)
-// console.log('1...2...3...4')
-console.log(`
 
-https://codebeautify.org/ascii-to-text
-___________________________________`);
-console.log("In the year 1985, Jane Senith embarked on a journey that defied the limits of the known world. As the echoes of her path intertwine with the present, the key to unraveling her legacy lies hidden within the shadows of this very moment. Seek not only the answer but the question that binds it to the fabric of the unknown.");
+
 
 const duck = document.getElementById('duck');
 const vector = document.getElementById('vector');
