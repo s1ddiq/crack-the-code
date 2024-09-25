@@ -5,95 +5,150 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Truth Revealed</title>
     <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Jersey+15+Charted&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
         body {
             margin: 0;
             padding: 0;
             background-color: #1a1a2e;
             color: #f5f5f5;
-            font-family: 'Arial', sans-serif;
-            overflow: hidden;
+            font-family: 'Pixelify Sans', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            /* overflow: hidden; */
         }
 
-        #scrolling-text {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            animation: scrollUp 100s linear infinite;
+        #text-bubble {
+            width: 80%;
+            background-color: #4f5591;
+            padding: 2em;
+            border-radius: 10px;
+            text-align: justify;
+            font-size: 1.5rem;
+            line-height: 1.6;
+            max-width: 650px;
+            /* opacity: 0; */
+            transition: opacity 1s ease-in-out;
+            color: white;
         }
 
         h2 {
-            margin: 10px 0;
-            font-size: 2rem;
             text-align: center;
-            opacity: 0.8;
-            margin-top: 2em;
+            margin-bottom: 1em;
         }
 
-        p {
-            width: 80%;
-            font-size: 1.5rem;
-            line-height: 1.6;
+        /* Fade In & Fade Out */
+        .fade-in {
+            opacity: 1;
+        }
+
+        .fade-out {
+            opacity: 0;
+        }
+
+        #content {
             text-align: justify;
-            margin: 0;
         }
 
-        @keyframes scrollUp {
-            0% {
-                transform: translateY(100%);
-            }
-            100% {
-                transform: translateY(-100%);
-            }
+        /* Glitch Effect */
+        .glitch {
+            position: relative;
+            display: inline-block;
+            color: #fff;
+            font-size: 2rem;
+            font-weight: bold;
+            animation: glitch 1s infinite;
+        }
+
+        @keyframes glitch {
+            0% { transform: none; opacity: 1; }
+            20% { transform: skew(10deg); opacity: 0.8; }
+            40% { transform: skew(-10deg); opacity: 0.4; }
+            60% { transform: none; opacity: 0.8; }
+            80% { transform: skew(5deg); opacity: 0.6; }
+            100% { transform: none; opacity: 1; }
         }
     </style>
 </head>
 <body>
-    <div id="scrolling-text">
-        <h2>The Unsettling Truth</h2>
-        <p>
-            The truth is far more elusive and disturbing than you ever anticipated. You entered this game with a clear purpose in mind: to solve puzzles, to unlock secrets, and to defeat the supposed mastermind who had orchestrated this entire ordeal. But what if I told you there was no mastermind? What if I told you that from the very beginning, every move you made was not being watched by some cunning villain but by something much more detached, something much colder?
-        </p>
 
-        <h2>A Test of Observation</h2>
-        <p>
-            The truth, as you now must come to terms with, is that this was never about solving anything. This was never about you overcoming a clever adversary or unraveling an intricate plot. You, Subject 52, were the puzzle all along. Your mind, your reactions, your thought processes—these were the real objects of study. Every choice you made, every hesitation, every moment of frustration or triumph was carefully cataloged and scrutinized.
-        </p>
-
-        <h2>Previous Subjects</h2>
-        <p>
-            You weren’t the first to walk this path, and you won’t be the last. Subjects 1 through 51, they all came before you. Each one of them walked a similar road, guided by the same illusions of control, the same belief that they were outsmarting some unseen force. But like you, they came to realize, far too late, that they were never the ones in control.
-        </p>
-
-        <h2>Your Role in the Experiment</h2>
-        <p>
-            You were always meant to be Subject 52, and you were always meant to reach this point. Every step of your journey was carefully constructed to lead you here, to this moment, to this revelation. Now that you’ve reached it, where do you go from here? Can you simply walk away, pretend that none of this mattered? Or will this knowledge haunt you?
-        </p>
-
-        <h2>The Eyes That Watch</h2>
-        <p>
-            Somewhere, in a room you will never see, behind walls you will never breach, there are those who have been watching you. These unseen observers have collected everything: every keystroke, every pause, every heartbeat. The data gathered from you will now be processed, analyzed, dissected. You are, and always have been, an experiment, a cog in a machine far larger than you could ever comprehend.
-        </p>
-
-        <h2>Existential Questions</h2>
-        <p>
-            Perhaps, in time, you’ll accept it. Perhaps you'll come to terms with the fact that your autonomy was an illusion, that your choices were always part of someone else's design. But remember, even your rebellion may be part of the experiment. Every reaction, every refusal, every act of defiance is just another variable to be measured.
-        </p>
-
-        <h2>The Game Never Ends</h2>
-        <p>
-            So, Subject 52, where does this leave you? What will you do now that the experiment has been laid bare before you? Will you try to fight it? Will you try to escape? Or will you accept your place within it, knowing that the eyes watching you are always there, always observing, always learning? Because the truth is, even though you’ve reached the end of this game, the game itself has only just begun.
-        </p>
+    <div id="text-bubble">
+        <h2 id="title"></h2>
+        <p id="content"></p>
     </div>
 
     <script>
+        
+        const texts = [
+        
+        // Text array remains the same
+            { title: "Revealing the truth", content: "The truth is far more elusive and disturbing than you ever anticipated. You entered this game with a clear purpose in mind: to solve puzzles, to unlock secrets, and to defeat the supposed mastermind who had orchestrated this entire ordeal. But what if I told you there was no mastermind? What if I told you that from the very beginning, every move you made was not being watched by some cunning villain but by something much more detached, something much colder?" },
+            { title: "A Test of Observation", content: "The truth, as you now must come to terms with, is that this was never about solving anything. This was never about you overcoming a clever adversary or unraveling an intricate plot. You, Subject 52, were the puzzle all along. Your mind, your reactions, your thought processes—these were the real objects of study." },
+            { title: "Previous Subjects", content: "You weren’t the first to walk this path, and you won’t be the last. Subjects 1 through 51, they all came before you. Each one of them walked a similar road, guided by the same illusions of control, the same belief that they were outsmarting some unseen force." },
+            { title: "Your Role in the Experiment", content: "You were always meant to be Subject 52, and you were always meant to reach this point. Every step of your journey was carefully constructed to lead you here, to this moment, to this revelation. Now that you’ve reached it, where do you go from here?" },
+            { title: "The Eyes That Watch", content: "Somewhere, in a room you will never see, behind walls you will never breach, there are those who have been watching you. These unseen observers have collected everything: every keystroke, every pause, every heartbeat." },
+            { title: "Existential Questions", content: "Perhaps, in time, you’ll accept it. Perhaps you'll come to terms with the fact that your autonomy was an illusion, that your choices were always part of someone else's design. But remember, even your rebellion may be part of the experiment." },
+            { title: "The Game Never Ends", content: "So, Subject 52, where does this leave you? What will you do now that the experiment has been laid bare before you? Will you try to fight it? Will you try to escape? Or will you accept your place within it, knowing that the eyes watching you are always there?" }
+        ];
+
+let currentIndex = 0;
+const titleElement = document.getElementById('title');
+const contentElement = document.getElementById('content');
+const textBubble = document.getElementById('text-bubble');
+
+// Texts array stays the same
+
+function updateText() {
+    const currentText = texts[currentIndex];
+    titleElement.textContent = currentText.title;
+    contentElement.textContent = currentText.content;
+}
+
+function handleSpacebar(event) {
+    if (event.code === 'Space') {
+        // Prevent default scrolling with spacebar
+        event.preventDefault();
+
+        // Fade out the current text bubble
+        textBubble.classList.remove('fade-in');
+        textBubble.classList.add('fade-out');
+
         setTimeout(() => {
-            alert("The experiment is over... for now. But the watcher is always there.");
-            window.location.href = 'end.html'
-        }, 105000); // Alert after 105 seconds
+            // Move to the next text if available
+            currentIndex++;
+
+            if (currentIndex < texts.length) {
+                // Update text and fade in the new text
+                updateText();
+                textBubble.classList.remove('fade-out');
+                textBubble.classList.add('fade-in');
+            } else {
+                // If it's the last text, trigger the glitch effect
+                textBubble.classList.remove('fade-out');
+                textBubble.classList.add('glitch');
+
+                setTimeout(() => {
+                    alert("The experiment is over... for now. But the watcher is always there.");
+                    window.location.href = 'end.html';
+                }, 2000); // Delay to show glitch effect before alert
+            }
+        }, 1000); // Wait for the fade-out to complete before updating
+    }
+}
+
+// Initialize the first text and fade it in
+updateText();
+textBubble.classList.add('fade-in');
+
+// Listen for spacebar key press
+document.addEventListener('keydown', handleSpacebar);
+
+
     </script>
+
 </body>
 </html>
