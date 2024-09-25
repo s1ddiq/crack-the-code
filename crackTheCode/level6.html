@@ -7,8 +7,6 @@
     </head>
     
     <style>
-
-       
         body {
         font-family: "Microsoft Yahei";
         background-color: rgb(255, 255, 255);
@@ -116,7 +114,7 @@
 </style>
 <body>
 
-<!--     <audio src="bgMusic.mp3" id="audioGame" loop autoplay></audio> -->
+    <audio src="bgMusic.mp3" id="audioGame" loop></audio>
 
 <div id="container-1">
 
@@ -134,32 +132,18 @@
 
 
 </div>
-<audio src="bgMusic.mp3" id="audioGame" loop></audio>
 
 </body>
 
 <script>
- 
-
-    // document.getElementById('startAudio').onclick = function() {
-      
-    // };
-
-   const audioEL = document.getElementById('audioGame')
-audioEL.play()
-
-    const bodyEL = document.querySelector('body');
-    bodyEL.addEventListener('click', () => {
-        audioEL.play();
-    })
-
-
     const containerOne = document.getElementById('container-1');
     const containerTwo = document.getElementById('container-2');
+    const audioG = document.getElementById('audioGame');
     const apple = document.getElementById('apple');
     const sImg = document.getElementById('secretImage');
     sImg.addEventListener('click', () => {
         alert('there is an apple in this tree, find it and you will be free.');
+        audioG.play();
     })
 
     apple.addEventListener('click', () => {
@@ -189,9 +173,13 @@ document.addEventListener('keydown', (event) => {
 
         if (command === 'grabKey()') {
             grabKey();
+        } else {
+            alert('ERROR 66: COMMAND_NOT_FOUND')
         }
+
     }
 });
 
+    audioG.play();
 </script>
 </html>
