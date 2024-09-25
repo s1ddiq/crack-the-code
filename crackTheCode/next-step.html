@@ -5,6 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Text Bubble</title>
     <style>
+
+        .hidden {
+            display: none;
+        }
+
+        .fade-out-perm {
+            animation: fadeOutPerm 1s ease forwards;
+        }
+
+        @keyframes fadeOutPerm {
+            50% {
+                opacity: 0;
+            }
+
+            100% {
+                display: none;
+            }
+        }
         body {
             font-family: Arial, sans-serif;
             display: flex;
@@ -51,10 +69,11 @@
             "Welcome brave wanderer. I’ve been following your journey closely...",
             "You’re making excellent progress, but I have a small request for you.",
             "To continue, change your URL to `level4.html` and proceed with care.",
-            "Once there, you will uncover the next piece of the puzzle. Stay alert and trust your instincts."
+            "Once there, you will uncover the next piece of the puzzle. Stay alert and trust your instincts.",
+            '',
         ];
 
-        let  currentIndex = 0;
+        let currentIndex = -1;
         const textBubble = document.getElementById('textBubble');
 
         function showNextMessage() {
@@ -63,6 +82,10 @@
                 currentIndex = (currentIndex + 1) % messages.length;
                 textBubble.textContent = messages[currentIndex];
                 textBubble.classList.remove('fade-out'); // Fade in
+                if (currentIndex === 4) {
+                    // textBubble.textContent = '---------END--------- :/';
+                    textBubble.classList.add('fade-out-perm');
+                }
             }, 500); // Matches the CSS transition duration
 
             localStorage.setItem('secretDiscovered?', 'TRUE');
