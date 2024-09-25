@@ -5,32 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Level 4</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Jersey+15+Charted&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+.hidden {
+    display: none !important;
+  }
+
+  .shown {
+    display: block !important;
+  }
+
+  #welcome {
+    font-size: 2.5em;
+    font-family: "Roboto";
+  }
+
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f0f0f0;
-            margin: 0;
-            padding: 0;
+            display: flex;
+    justify-content:center;
+    align-items: start;
+    height: 100vh;
+    background: linear-gradient(100deg, #224775, #1a1a2e); /* Soft gradient with similar tones */
+    text-align: center;
+    font-family: "Pixelify Sans";
+    color: white;
         }
         .container {
             margin-top: 50px;
+            background-color: #1a1a2e;
+            border-radius: 20px;
+            border: 2px solid tomato;
+            padding: 20px;
         }
         input[type="text"] {
             padding: 10px;
             font-size: 16px;
-            width: 300px;
-            border: 2px solid #ccc;
+            width: 295px;
+            border: 5px solid #0056b3;
             border-radius: 5px;
+            color: #007bff;
         }
         button {
             margin-top: 10px;
-            padding: 10px 20px;
             font-size: 16px;
-            border: none;
-            border-radius: 5px;
             background-color: #007bff;
             color: white;
             cursor: pointer;
+            width: 325px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 2px solid #0056b3;
         }
         button:hover {
             background-color: #0056b3;
@@ -79,6 +104,7 @@
             font-size: 3em;
             opacity: 0;
             background-color: red;
+            padding: 20px;
         }
 
         .secret-key:hover {
@@ -88,11 +114,11 @@
 </head>
 <body>
 
-    <p style="position: absolute; top: 40%; left: 40%;" class="secret-key">T</p>
+    <p style="position: absolute; top: 50%; left: 40%;" class="secret-key">T</p>
     <p style="position: absolute; top: 55%; left: 65%;" class="secret-key">1</p>
-    <p style="position: absolute; top: 25%; left: 45%;" class="secret-key">9</p>
+    <p style="position: absolute; top: 25%; left: 15%;" class="secret-key">9</p>
     <div class="container">
-        <h1 id="welcome">Welcome to Level 4</h1>
+        <h1 id="welcome">Level 4</h1>
         <p>To proceed, enter the code below:</p>
         <input type="text" id="codeInput" placeholder="Enter code here">
         <br>
@@ -103,6 +129,7 @@
     <div class="bubble hidden" id="textBubble">
         spacebar to proceed...
     </div>
+
 
     <script>
 
@@ -144,7 +171,7 @@
 
         function goToNextPosition() {
             textBubble.style.left = '40%';
-            textBubble.style.top = '40%';
+            textBubble.style.top = '50%';
         }
         
         function showNextMessage() {
@@ -171,7 +198,7 @@
             }
             else if (currentIndex===8) {
                 textBubble.style.top = '25%';
-                textBubble.style.left = '45%';
+                textBubble.style.left = '15%';
             }
         });
         }
@@ -186,11 +213,11 @@
                 messageElement.style.color = "green";
                 // Redirect to the next level or provide further instructions
                 setTimeout(() => {
-                    window.location.href = 'https://s1ddiq.github.io/crack-the-code/crackTheCode/level5.html'; // Change this to the actual next level
+                    window.location.href = 'level5.html'; // Change this to the actual next level
                 }, 2000);
             } else if(userInput === 'T19') {
                 alert("You've done well, transferring you to another level");
-                window.location.href = 'https://s1ddiq.github.io/crack-the-code/crackTheCode/level6.html';
+                window.location.href = 'level6.html';
             } 
             else {
                 messageElement.textContent = "Journey back to level 2, where you may find another clue";
