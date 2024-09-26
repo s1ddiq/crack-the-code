@@ -10,6 +10,9 @@
         body {
         font-family: "Microsoft Yahei";
         background-color: rgb(255, 255, 255);
+        overflow-x: hidden; 
+        /* BUG FIX ^ */
+        height: 100vh;
     }
     #secretImage {
         position: absolute;
@@ -28,7 +31,12 @@
 
     .hidden {
         animation: disappear 2s forwards;
-        opacity: 1;
+        opacity: 0;
+        /* display: none; */
+    }
+
+    .hidden-immediately {
+        display: none;
     }
 
     .shown {
@@ -136,6 +144,7 @@
 </body>
 
 <script>
+
     const containerOne = document.getElementById('container-1');
     const containerTwo = document.getElementById('container-2');
     const audioG = document.getElementById('audioGame');
@@ -173,8 +182,10 @@ document.addEventListener('keydown', (event) => {
 
         if (command === 'grabKey()') {
             grabKey();
-        } else {
-            alert('ERROR 66: COMMAND_NOT_FOUND')
+        } else if (command !== 'grabKey()') {
+            // alert('ERROR 66: COMMAND_NOT_FOUND');
+            command = prompt('command not found | command?');
+            if (command === 'grabKey()') grabKey();
         }
 
     }
